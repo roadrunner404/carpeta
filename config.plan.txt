@@ -1,0 +1,22 @@
+plantilla>
+
+/etc/bind/named.conf.options > 8.8.8.8
+
+/etc/bind/named.conf.local > named.conf.local.txt
+named-checkconf
+
+Direct
+/etc/bind/db.hostaldaweb.es.host > db.hostaldaweb.es.host
+
+
+Invers
+/etc/bind/db.192.168.2.rev > db.192.168.6.rev
+named-checkzone hostaldaweb.es /etc/bind/db.hostaldaweb.es.host
+named-checkzone 6.168.192.in-addr.arpa /etc/bind/db.192.168.6.rev
+
+/etc/init.d/bind9 restart
+
+nslookup hostaldaweb.es
+nslookup 192.168.6.250
+
+nslookup uhu.es

@@ -1,0 +1,16 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN     SOA      hostaldaweb.es  root.hostaldaweb.es. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@                       IN      NS      hostaldaweb.es.
+hostaldaweb.es.         IN      A       192.168.6.250
+dns.hostaldaweb.es.     IN      A       192.168.6.250
+pc1.hostaldaweb.es.     IN      A       192.168.6.250
+pc2.hostaldaweb.es.     IN      A       192.168.6.4
