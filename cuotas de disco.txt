@@ -1,0 +1,23 @@
+dmesg | grep quotas
+
+sudo apt install quota quotatool
+
+sudo nano /etc/fstab
+
+/dev/disk/by-uuid/49115910-73ca-41ef-a5d8-183147b5de99 /home ext4 defaults 0 0
+
+Una vez localizada, incluiremos los argumentos que informan al sistema de que el volumen indicado podrá tener cuotas para los usuarios y para los grupos (usrquota y grpquota).
+
+/dev/disk/by-uuid/49115910-73ca-41ef-a5d8-183147b5de99 /home ext4 defaults,usrquota,grpquota 0 0
+
+sudo mount -o remount,rw /home
+
+sudo quotacheck -cgu /home
+
+Para asignar cuotas a los usuarios o grupos usaremos el comando edquota. Por ejemplo, para asignar valores de cuota a la cuenta usuario, escribiríamos lo siguiente:
+
+sudo edquota -u usuario
+
+Si hubiésemos querido asignar valores a todo un grupo, bastaría haber escrito así el comando anterior:
+
+sudo edquota -g grupo
